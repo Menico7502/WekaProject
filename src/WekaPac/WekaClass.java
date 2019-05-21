@@ -5,36 +5,16 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Optional;
-
-import org.apache.commons.compress.compressors.FileNameUtil;
-
-import weka.attributeSelection.BestFirst;
-import weka.attributeSelection.CfsSubsetEval;
-import weka.attributeSelection.GainRatioAttributeEval;
-import weka.attributeSelection.GreedyStepwise;
 import weka.attributeSelection.InfoGainAttributeEval;
-import weka.attributeSelection.Ranker;
-import weka.classifiers.Evaluation;
-import weka.classifiers.trees.RandomTree;
-import weka.core.Attribute;
 import weka.core.Instances;
 import weka.core.converters.ArffSaver;
 import weka.core.converters.CSVLoader;
-import weka.core.converters.LibSVMLoader;
 import weka.filters.Filter;
-import weka.filters.supervised.attribute.AttributeSelection;
 import weka.filters.unsupervised.attribute.Add;
-import weka.filters.unsupervised.attribute.NumericToNominal;
 import weka.filters.unsupervised.attribute.Remove;
 import Classify.*;
 import Classify.EnumClassify;
-import org.json.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -99,12 +79,14 @@ public class WekaClass {
 			 
 		}
 	}
+	
 	public static void RemoveAttribute(String JsonPath) throws FileNotFoundException, IOException, ParseException
 	{
 		JSONParser parser = new JSONParser();
 		Object obj = parser.parse(new FileReader(JsonPath));
 		
 	}
+	
 	@SuppressWarnings("unchecked")//the function json.put is unsave on java
 	public static void BuildJsonRankedAttributes(Instances data,String Path,InfoGainAttributeEval eval) throws Exception
 	{
