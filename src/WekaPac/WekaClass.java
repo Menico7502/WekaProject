@@ -80,12 +80,6 @@ public class WekaClass {
 		}
 	}
 	
-	public static void RemoveAttribute(String JsonPath) throws FileNotFoundException, IOException, ParseException
-	{
-		JSONParser parser = new JSONParser();
-		Object obj = parser.parse(new FileReader(JsonPath));
-		
-	}
 	
 	@SuppressWarnings("unchecked")//the function json.put is unsave on java
 	public static void BuildJsonRankedAttributes(Instances data,String Path,InfoGainAttributeEval eval) throws Exception
@@ -231,7 +225,7 @@ public class WekaClass {
             for(int i=0;i<data.numAttributes();i++) {
             	for (Object var : AttrList) 
             	{ 
-            		if(((JSONObject) var).get("Wantit?(YES/NO)").equals("NO"))
+            		if(((JSONObject) var).get("IsSelected").equals("NO"))
             		{
             			data=FindAttributeAndDelete(data,((JSONObject) var).get("Attribute").toString()); 
             		}
