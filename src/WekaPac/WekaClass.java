@@ -94,6 +94,7 @@ public class WekaClass {
 		 json.put("IsSelected", "");
 		 try {
 			    file.write(json.toJSONString());
+			    file.write(',');
 			    file.flush();
 			    
 			} catch (Exception ex) {
