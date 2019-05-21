@@ -91,6 +91,7 @@ public class WekaClass {
 	public static void BuildJsonRankedAttributes(Instances data,String Path,InfoGainAttributeEval eval) throws Exception
 	{
 		 FileWriter file = new FileWriter(Path+"\\AttributesRanks.json");
+		 file.append('[');
 		 for(int i=2;i<data.numAttributes()-1;i++) {
 		 JSONObject json = new JSONObject(); //creates main json
 		
@@ -105,6 +106,7 @@ public class WekaClass {
 			    System.out.println("error: " + ex.toString());
 			}
 		 }
+		 file.append(']');
 		 file.close();
 	}
 	public static void LoadAndTest(String SaveModelPath,String ModelName,Instances TestDataarff, String CsvPath) throws Exception
