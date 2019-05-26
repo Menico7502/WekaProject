@@ -20,6 +20,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 //PreProcessing Weka 
+
+@SuppressWarnings("unchecked")
 public class WekaClass {
 
 	
@@ -33,6 +35,9 @@ public class WekaClass {
 		String SaveModelPath = args[5];
 		String ModelName = args[6];
 		String JsonPath = args[7];
+		
+		for(int i = 0; i < args.length; i++)
+			System.out.println("arg[" + i + "]: " + args[i]);
 
 		if(ActionEnum.ConvertToEnum(Action.toString())==ActionEnum.Rank)
 		{
