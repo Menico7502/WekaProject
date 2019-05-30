@@ -221,7 +221,7 @@ public class WekaClass {
         //System.out.println(jsonPath);
         try (FileReader reader = new FileReader(jsonPath))
         {
-            //Read JSON file
+            //Read JSON file-
             Object obj = jsonParser.parse(reader);
  
             JSONArray AttrList = (JSONArray) obj;
