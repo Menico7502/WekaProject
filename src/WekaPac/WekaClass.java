@@ -233,7 +233,7 @@ public class WekaClass {
             for(int i=0;i<data.numAttributes();i++) {
             	for (Object var : AttrList) 
             	{ 
-            		if(((JSONObject) var).get("IsSelected") != null && ((JSONObject) var).get("IsSelected").equals(false))
+            		if(((JSONObject) var).get("IsSelected") != null && ((JSONObject) var).get("IsSelected").equals("false"))
             		{
             			data=FindAttributeAndDelete(data,((JSONObject) var).get("Attribute").toString()); 
             		}
