@@ -96,7 +96,7 @@ public class WekaClass {
 		
 		 json.put("Attribute", data.attribute(i).name());
 		 json.put("Rank", String.valueOf(eval.evaluateAttribute(i)));
-		 json.put("IsSelected", "");
+		 json.put("IsSelected", "false");
 		 try {
 			    file.write(json.toJSONString());
 			    if(i+1<data.numAttributes()-1)
