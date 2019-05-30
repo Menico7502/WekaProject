@@ -213,11 +213,12 @@ public class WekaClass {
 		    
 		    return data;
 	}
+	
 	public static Instances AttributesSelection(String jsonPath,Instances data) throws FileNotFoundException, IOException, ParseException
 	{
 		   //JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
-         System.out.println(jsonPath);
+        //System.out.println(jsonPath);
         try (FileReader reader = new FileReader(jsonPath))
         {
             //Read JSON file
@@ -227,7 +228,7 @@ public class WekaClass {
             for(int i=0;i<data.numAttributes();i++) {
             	for (Object var : AttrList) 
             	{ 
-            		if(((JSONObject) var).get("IsSelected").equals("NO"))
+            		if(((JSONObject) var).get("IsSelected") != null && ((JSONObject) var).get("IsSelected").equals(false))
             		{
             			data=FindAttributeAndDelete(data,((JSONObject) var).get("Attribute").toString()); 
             		}
