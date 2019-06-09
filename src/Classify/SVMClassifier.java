@@ -26,7 +26,7 @@ public class SVMClassifier extends Classfiers{
 		eval.evaluateModel(svm, TrainData);
 		setClassifer(svm);
 		setEval(eval);	
-		super.PrintResult();
+		//super.PrintResult();
 	}
 
 

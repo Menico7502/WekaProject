@@ -26,7 +26,7 @@ public class NueralNetworkClassifier extends Classfiers {
 		eval.evaluateModel(multilayerPerceptron, TrainData);
 		setClassifer(multilayerPerceptron);
 		setEval(eval);	
-		super.PrintResult();
+		//super.PrintResult();
 		 
 			
 	}

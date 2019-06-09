@@ -27,7 +27,7 @@ public class NaiveBayesClassifier extends Classfiers{
 		eval.evaluateModel(nb, TrainData);
 		setClassifer(nb);
 		setEval(eval);	
-		super.PrintResult();
+		//super.PrintResult();
 		 
 			
 	}

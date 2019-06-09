@@ -27,7 +27,7 @@ public class RandomTreeClassifier extends Classfiers{
 		eval.evaluateModel(randomTree, TrainData);
 		setClassifer(randomTree);
 		setEval(eval);	
-		super.PrintResult();
+		//super.PrintResult();
 	}
 
 

@@ -244,7 +244,7 @@ public class WekaClass {
 		    data.deleteAttributeAt(0);		
 		    //Filter user Attribute Selection
 		    if(JsonPath!=null)
-		    	data=AttributesSelection(JsonPath,data);
+		    	data=AttributesSelection(JsonPath+"\\AttributesRanks.json",data);
 		    //Build File Arff
 		    ArffSaver saver = new ArffSaver();		  
 		    saver.setInstances(data);
