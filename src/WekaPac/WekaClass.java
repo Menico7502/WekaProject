@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import weka.attributeSelection.InfoGainAttributeEval;
+import weka.classifiers.Classifier;
 import weka.core.Instances;
 import weka.core.converters.ArffSaver;
 import weka.core.converters.CSVLoader;
@@ -38,7 +39,7 @@ public class WekaClass {
 		
 		for(int i = 0; i < args.length; i++)
 			System.out.println("arg[" + i + "]: " + args[i]);
-
+	
 		if(ActionEnum.ConvertToEnum(Action.toString())==ActionEnum.Rank)
 		{
 			//Rank the Data
@@ -58,8 +59,8 @@ public class WekaClass {
 
 			//Create TrainingData
 			Instances TrainData=CreateRffFile(TrainingData,Trainingrff,JsonPath.toString());
-			
-			
+			//Rank 10fold Crossvaildaition
+			tenfold(TrainData,JsonPath);
 			//ClassifyAll
 			 for(int i = 8; i < args.length; i++)
 			 {
@@ -85,7 +86,41 @@ public class WekaClass {
 		}
 	}
 	
-	
+	public static void tenfold(Instances TrainData,String jsonpath) throws Exception
+	{
+			FileWriter file = new FileWriter(jsonpath+"\\tenfold.json");
+			file.append('[');
+			JSONObject jo = new JSONObject();
+			
+			DecisionStumpClassifier decisionStumpClass=new DecisionStumpClassifier(TrainData);
+			decisionStumpClass.Build();
+			jo.put("decisionStump",Double.toString(decisionStumpClass.tenFold()));
+			
+			J48TreeClassifier j48TreeClassifier=new J48TreeClassifier(TrainData);
+			j48TreeClassifier.Build();
+			jo.put("j48TreeClassifier",Double.toString(j48TreeClassifier.tenFold()));
+			
+			NaiveBayesClassifier nb=new NaiveBayesClassifier(TrainData);
+			nb.Build();
+			jo.put("nb",Double.toString(nb.tenFold()));
+			
+			NueralNetworkClassifier nueralNetworkClassifier=new NueralNetworkClassifier(TrainData);
+			nueralNetworkClassifier.Build();
+			jo.put("nueralNetworkClassifier",Double.toString(nueralNetworkClassifier.tenFold()));
+
+			RandomTreeClassifier randomTreeClass=new RandomTreeClassifier(TrainData);
+			randomTreeClass.Build();
+			jo.put("randomTreeClass",Double.toString(randomTreeClass.tenFold()));
+			
+			 try {
+				    file.write(jo.toJSONString());
+				    file.flush();				    
+				} catch (Exception ex) {
+				    System.out.println("error: " + ex.toString());
+				}
+			 file.append(']');
+			 file.close();
+	}
 	@SuppressWarnings("unchecked")//the function json.put is unsave on java
 	public static void BuildJsonRankedAttributes(Instances data,String Path,InfoGainAttributeEval eval) throws Exception
 	{

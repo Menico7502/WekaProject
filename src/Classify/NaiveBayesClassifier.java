@@ -31,4 +31,5 @@ public class NaiveBayesClassifier extends Classfiers{
 		 
 			
 	}
+
 }

@@ -1,7 +1,7 @@
 package WekaPac;
 
 public enum ActionEnum {
-	Classify,Test,Rank;
+	Classify,Test,Rank,tenFold;
 	
     public static ActionEnum ConvertToEnum(String value){
         if(value.equalsIgnoreCase(Classify.toString()))
@@ -10,6 +10,8 @@ public enum ActionEnum {
             return ActionEnum.Test;
         else if(value.equalsIgnoreCase(Rank.toString()))
             return ActionEnum.Rank;
+        else if(value.equalsIgnoreCase(tenFold.toString()))
+            return ActionEnum.tenFold;
         else
             return null;
     }
@@ -20,6 +22,8 @@ public enum ActionEnum {
             return "Test";
     	if(e==Rank)
             return "Rank";
+    	if(e==tenFold)
+            return "tenFold";
         return null;
     }
 

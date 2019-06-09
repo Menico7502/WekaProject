@@ -1,16 +1,17 @@
 package Classify;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-
-
+import java.util.Random;
 
 import weka.classifiers.AbstractClassifier;
+import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
 import weka.classifiers.bayes.NaiveBayes;
 import weka.classifiers.functions.MultilayerPerceptron;
@@ -40,6 +41,12 @@ public class Classfiers {
 	
 	public Object getClassifer() {
 		return classifer;
+	}
+	public double tenFold() throws Exception
+	{		
+		 this.eval.crossValidateModel((Classifier) this.classifer, this.TrainData, 10, new Random(1));
+		 System.out.println("Estimated Accuracy: "+Double.toString(eval.pctCorrect()));
+		 return eval.pctCorrect();
 	}
 	public void setClassifer(Object classifer) {
 		if(type==EnumClassify.DecisionStump)
