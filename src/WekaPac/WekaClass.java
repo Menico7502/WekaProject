@@ -50,8 +50,13 @@ public class WekaClass {
 		    Instances data = loader.getDataSet();
 			data.setClass(data.attribute("Class"));
 			eval.buildEvaluator(data);
-			/////////////////////////////Create json file
+			
+			//Create json file
 			 BuildJsonRankedAttributes(data,JsonPath,eval);
+			 
+			//Rank 10fold Cross validation
+			tenfold(data,JsonPath);
+			
 		}
 		else if(ActionEnum.ConvertToEnum(Action.toString())==ActionEnum.Classify)
 		{
@@ -59,8 +64,7 @@ public class WekaClass {
 
 			//Create TrainingData
 			Instances TrainData=CreateRffFile(TrainingData,Trainingrff,JsonPath.toString());
-			//Rank 10fold Crossvaildaition
-			tenfold(TrainData,JsonPath);
+			
 			//ClassifyAll
 			 for(int i = 8; i < args.length; i++)
 			 {
