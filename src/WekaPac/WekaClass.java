@@ -53,9 +53,10 @@ public class WekaClass {
 			
 			//Create json file
 			 BuildJsonRankedAttributes(data,JsonPath,eval);
-			 
+			 //
+			 Instances tenfolddata=CreateRffFile(TrainingData,null,null);
 			//Rank 10fold Cross validation
-			tenfold(data,JsonPath);
+			tenfold(tenfolddata,JsonPath);
 			
 		}
 		else if(ActionEnum.ConvertToEnum(Action.toString())==ActionEnum.Classify)
@@ -248,11 +249,12 @@ public class WekaClass {
 		    if(JsonPath!=null)
 		    	data=AttributesSelection(JsonPath+"\\AttributesRanks.json",data);
 		    //Build File Arff
+		    if(outputFilePath!=null) {
 		    ArffSaver saver = new ArffSaver();		  
 		    saver.setInstances(data);
 		    saver.setFile(new File(outputFilePath));
 		    saver.writeBatch();
-		    
+		    }
 		    return data;
 	}
 	

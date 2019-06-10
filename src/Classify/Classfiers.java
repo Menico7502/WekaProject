@@ -44,8 +44,7 @@ public class Classfiers {
 	}
 	public double tenFold() throws Exception
 	{		
-		 this.eval.crossValidateModel((Classifier) this.classifer, this.TrainData, 10, new Random(1));
-		 System.out.println(this.getClass().getName().toString());
+		 this.eval.crossValidateModel((Classifier) this.classifer, this.TrainData, 10, new Random(1));		 
 		 System.out.println("Estimated Accuracy: "+Double.toString(eval.pctCorrect()));
 		 return eval.pctCorrect();
 	}
