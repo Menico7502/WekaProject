@@ -24,7 +24,7 @@ public class J48TreeClassifier extends Classfiers{
 		eval.evaluateModel(j48, TrainData);
 		setClassifer(j48);
 		setEval(eval);	
-		//super.PrintResult();
+		super.PrintResult();
 		
 			
 	}

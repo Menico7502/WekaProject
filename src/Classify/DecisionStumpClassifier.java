@@ -25,7 +25,7 @@ public class DecisionStumpClassifier extends Classfiers{
 		eval.evaluateModel(decisionStump, TrainData);
 		setClassifer(decisionStump);
 		setEval(eval);	
-		//super.PrintResult();
+		super.PrintResult();
 		 
 			
 	}

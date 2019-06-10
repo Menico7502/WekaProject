@@ -89,7 +89,6 @@ public class WekaClass {
 	public static void tenfold(Instances TrainData,String jsonpath) throws Exception
 	{
 			FileWriter file = new FileWriter(jsonpath+"\\tenfold.json");
-			file.append('[');
 			JSONObject jo = new JSONObject();
 			
 			DecisionStumpClassifier decisionStumpClass=new DecisionStumpClassifier(TrainData);
@@ -118,7 +117,6 @@ public class WekaClass {
 				} catch (Exception ex) {
 				    System.out.println("error: " + ex.toString());
 				}
-			 file.append(']');
 			 file.close();
 	}
 	@SuppressWarnings("unchecked")//the function json.put is unsave on java
